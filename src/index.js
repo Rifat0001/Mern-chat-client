@@ -6,16 +6,19 @@ import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
 import { BrowserRouter } from 'react-router-dom/cjs/react-router-dom.min';
 import './App.css'
+import ChatProvider from './Context/ContextProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-
-  <ChakraProvider>
+  <ChatProvider>
     <BrowserRouter>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
+      <ChakraProvider>
+        <React.StrictMode>
+          <App />
+        </React.StrictMode>
+      </ChakraProvider>
     </BrowserRouter>
-  </ChakraProvider>
+  </ChatProvider>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
