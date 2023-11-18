@@ -1,4 +1,4 @@
-import { Box, Button, Container, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
+import { Box, Button, Center, Container, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from '@chakra-ui/react';
 import React from 'react';
 import Login from '../components/Authentication/Login';
 import Signup from '../components/Authentication/Signup';
@@ -16,8 +16,8 @@ const Homepage = () => {
                 borderRadius="lg"
                 borderWidth="1px"
             >
-                <Text fontSize="4xl" fontFamily="Work sans">
-                    Talk-A-Tive
+                <Text fontSize="4xl" fontFamily="Work sans" textAlign="center" fontStyle="bold" >
+                    Mern Chat Application
                 </Text>
             </Box>
             <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">
