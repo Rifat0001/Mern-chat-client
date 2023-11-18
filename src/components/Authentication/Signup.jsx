@@ -2,6 +2,7 @@ import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, V
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
     const [show, setShow] = useState(false);
@@ -19,24 +20,25 @@ const Signup = () => {
     const submitHandler = async () => {
         setPicLoading(true);
         if (!name || !email || !password || !confirmpassword) {
-            toast({
+            Swal.fire({
+                position: "top-center",
+                icon: "error",
                 title: "Please Fill all the Feilds",
-                status: "warning",
-                duration: 5000,
-                isClosable: true,
-                position: "bottom",
+                showConfirmButton: false,
+                timer: 2000
             });
             setPicLoading(false);
             return;
         }
         if (password !== confirmpassword) {
-            toast({
+            Swal.fire({
+                position: "top-center",
+                icon: "warning",
                 title: "Passwords Do Not Match",
-                status: "warning",
-                duration: 5000,
-                isClosable: true,
-                position: "bottom",
+                showConfirmButton: false,
+                timer: 2000
             });
+            setPicLoading(false);
             return;
         }
         console.log(name, email, password, pic);
@@ -57,25 +59,26 @@ const Signup = () => {
                 config
             );
             console.log(data);
-            toast({
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
                 title: "Registration Successful",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-                position: "bottom",
+                showConfirmButton: false,
+                timer: 2000
             });
             localStorage.setItem("userInfo", JSON.stringify(data));
             setPicLoading(false);
             history.push("/chats");
         } catch (error) {
-            toast({
-                title: "Error Occured!",
-                description: error.response.data.message,
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-                position: "bottom",
+
+            Swal.fire({
+                position: "top-center",
+                icon: "warning",
+                title: error.response.data.message,
+                showConfirmButton: false,
+                timer: 2000
             });
+
             setPicLoading(false);
         }
     };

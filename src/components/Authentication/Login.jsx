@@ -1,19 +1,66 @@
 import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, VStack, useToast } from '@chakra-ui/react';
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import Swal from 'sweetalert2';
 const Login = () => {
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
-    const toast = useToast();
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [loading, setLoading] = useState(false);
 
     const history = useHistory();
 
-    const submitHandler = () => {
+    const submitHandler = async () => {
+        setLoading(true);
+        if (!email || !password) {
+            Swal.fire({
+                position: "top-center",
+                icon: "error",
+                title: "Please Fill all the Feilds",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            setLoading(false);
+            return;
+        }
 
-    }
+        try {
+            const config = {
+                headers: {
+                    "Content-type": "application/json",
+                },
+            };
+
+            const { data } = await axios.post(
+                "/api/user/login",
+                { email, password },
+                config
+            );
+
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
+                title: "Login Successfully",
+                showConfirmButton: false,
+                timer: 2000
+            });
+            // setUser(data);
+            localStorage.setItem("userInfo", JSON.stringify(data));
+            setLoading(false);
+            history.push("/chats");
+        } catch (error) {
+            Swal.fire({
+                position: "top-center",
+                icon: "warning",
+                title: error.response.data.message,
+                showConfirmButton: false,
+                timer: 2000
+            });
+            setLoading(false);
+        }
+    };
 
     return (
         <VStack spacing="10px">
