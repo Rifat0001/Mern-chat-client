@@ -2,8 +2,8 @@ import React from 'react';
 import { ChatState } from '../../Context/ContextProvider';
 import { Avatar, Box, Text } from '@chakra-ui/react';
 
-const UserListItem = ({ handleFunction }) => {
-    const { user } = ChatState();
+const UserListItem = ({ handleFunction, user }) => {
+
 
     return (
         <Box

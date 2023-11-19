@@ -30,6 +30,10 @@
   border: 5px;
 }
 
+.search-bar {
+  display: flex;
+}
+
 /* d="flex"
 justifyContent="space-between"
 alignItems="center"
