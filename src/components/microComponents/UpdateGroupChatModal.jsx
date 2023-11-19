@@ -84,7 +84,7 @@ const UpdateGroupChatModal = ({ fetchMessages, fetchAgain, setFetchAgain }) => {
         }
         setGroupChatName("");
     };
-
+    // for user control 
     const handleAddUser = async (user1) => {
         if (selectedChat.users.find((u) => u._id === user1._id)) {
             toast({
