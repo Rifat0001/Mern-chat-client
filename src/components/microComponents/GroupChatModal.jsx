@@ -4,6 +4,7 @@ import { ChatState } from '../../Context/ContextProvider';
 import axios from 'axios';
 import UserListItem from './UserListItem';
 import UserBadgeItem from './UserBadgeItem';
+import Swal from 'sweetalert2';
 
 const GroupChatModal = ({ children }) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
@@ -92,12 +93,12 @@ const GroupChatModal = ({ children }) => {
             );
             setChats([data, ...chats]);
             onClose();
-            toast({
+            Swal.fire({
+                position: "top-center",
+                icon: "success",
                 title: "New Group Chat Created!",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-                position: "bottom",
+                showConfirmButton: false,
+                timer: 2000
             });
         } catch (error) {
             toast({

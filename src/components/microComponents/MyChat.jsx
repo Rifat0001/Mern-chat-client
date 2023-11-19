@@ -61,12 +61,14 @@ const MyChat = ({ fetchAgain }) => {
                 d="flex"
                 w="100%"
                 justifyContent="space-between"
+
                 alignItems="center"
             >
                 My Chats
                 <GroupChatModal>
                     <Button
                         d="flex"
+                        ms={24}
                         fontSize={{ base: "17px", md: "10px", lg: "17px" }}
                         rightIcon={<AddIcon />}
                     >
