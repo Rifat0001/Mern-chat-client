@@ -9,15 +9,13 @@ import './App.css'
 import ChatProvider from './Context/ContextProvider';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ChatProvider>
+  <ChakraProvider>
     <BrowserRouter>
-      <ChakraProvider>
-        <React.StrictMode>
-          <App />
-        </React.StrictMode>
-      </ChakraProvider>
+      <ChatProvider>
+        <App />
+      </ChatProvider>
     </BrowserRouter>
-  </ChatProvider>
+  </ChakraProvider>,
 
 );
 

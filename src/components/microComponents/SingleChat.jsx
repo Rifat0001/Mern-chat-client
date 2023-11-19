@@ -6,7 +6,7 @@ import { ArrowBackIcon } from '@chakra-ui/icons';
 import { getSender, getSenderFull } from '../../Config/Chatlogics';
 import ProfileModal from './ProfileModal';
 import UpdateGroupChatModal from './UpdateGroupChatModal';
-
+import './style.css'
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(false);
