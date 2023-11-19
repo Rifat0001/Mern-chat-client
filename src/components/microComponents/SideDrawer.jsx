@@ -1,12 +1,15 @@
 import { BellIcon, ChevronDownIcon } from '@chakra-ui/icons';
 import { Avatar, Box, Button, Drawer, DrawerBody, DrawerContent, DrawerHeader, DrawerOverlay, Input, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Spinner, Text, Tooltip, useDisclosure, useToast } from '@chakra-ui/react';
 import axios from 'axios';
+import { getSender } from "../../Config/Chatlogics";
 import React, { useState } from 'react';
 import ProfileModal from './ProfileModal';
 import { ChatState } from '../../Context/ContextProvider';
 import { useHistory } from "react-router-dom";
 import UserListItem from './UserListItem';
 import ChatLoading from './ChatLoading';
+import NotificationBadge from 'react-notification-badge/lib/components/NotificationBadge';
+import { Effect } from 'react-notification-badge';
 const SideDrawer = () => {
     const [search, setSearch] = useState("");
     const [searchResult, setSearchResult] = useState([]);
@@ -98,13 +101,7 @@ const SideDrawer = () => {
     return (
         <>
             <Box
-                d="flex"
-                justifyContent="space-between"
-                alignItems="center"
-                bg="white"
-                w="100%"
-                p="5px 10px 5px 10px"
-                borderWidth="5px"
+                className='top-container'
             >
                 <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
                     <Button variant="ghost" onClick={onOpen}>
@@ -115,7 +112,7 @@ const SideDrawer = () => {
                     </Button>
                 </Tooltip>
                 <Text fontSize="2xl" fontFamily="Work sans">
-                    Mern Chat Application
+                    Talk-A-Tive
                 </Text>
                 <div>
                     <Menu>

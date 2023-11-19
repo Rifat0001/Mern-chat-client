@@ -2,14 +2,14 @@ import { Box, Button, Center, Container, Tab, TabList, TabPanel, TabPanels, Tabs
 import React, { useEffect } from 'react';
 import Login from '../components/Authentication/Login';
 import Signup from '../components/Authentication/Signup';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 const Homepage = () => {
     const history = useHistory();
     //! uncomment it after complete
-    // useEffect(() => {
-    //     const user = JSON.parse(localStorage.getItem("userInfo"));
-    //     if (user) history.push("/chats");
-    // }, [history]);
+    useEffect(() => {
+        const user = JSON.parse(localStorage.getItem("userInfo"));
+        if (user) history.push("/chats");
+    }, [history]);
 
     return (
         <Container maxW="xl" centerContent>

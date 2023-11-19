@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import Swal from 'sweetalert2';
+// import { useNavigate } from "react-router-dom";
 const Login = () => {
     const [show, setShow] = useState(false);
     const handleClick = () => setShow(!show);
@@ -11,7 +12,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
 
     const history = useHistory();
-
+    // const navigate = useNavigate();
     const submitHandler = async () => {
         setLoading(true);
         if (!email || !password) {
@@ -50,6 +51,7 @@ const Login = () => {
             localStorage.setItem("userInfo", JSON.stringify(data));
             setLoading(false);
             history.push("/chats");
+            // navigate('/chats')
         } catch (error) {
             Swal.fire({
                 position: "top-center",
