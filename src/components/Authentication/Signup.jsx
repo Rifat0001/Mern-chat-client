@@ -66,9 +66,12 @@ const Signup = () => {
                 showConfirmButton: false,
                 timer: 2000
             });
+            // setUser(data);
             localStorage.setItem("userInfo", JSON.stringify(data));
-            setPicLoading(false);
+            setPicLoading(false)
             history.push("/chats");
+            window.location.reload()
+
         } catch (error) {
 
             Swal.fire({
