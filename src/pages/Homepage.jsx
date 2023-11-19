@@ -24,7 +24,7 @@ const Homepage = () => {
                 borderWidth="1px"
             >
                 <Text fontWeight="bold" fontSize="4xl" fontFamily="Work sans" textAlign="center" fontStyle="bold" >
-                    Mern Chat Application
+                    EEE-9th Chat App
                 </Text>
             </Box>
             <Box bg="white" w="100%" p={4} borderRadius="lg" borderWidth="1px">

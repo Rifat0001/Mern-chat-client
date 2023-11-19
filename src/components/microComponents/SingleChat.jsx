@@ -1,4 +1,4 @@
-import { Box, IconButton, Input, Spinner, Text, useToast } from '@chakra-ui/react';
+import { Box, FormControl, IconButton, Input, Spinner, Text, useToast } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import { ChatState } from '../../Context/ContextProvider';
 import axios from 'axios';
@@ -7,6 +7,13 @@ import { getSender, getSenderFull } from '../../Config/Chatlogics';
 import ProfileModal from './ProfileModal';
 import UpdateGroupChatModal from './UpdateGroupChatModal';
 import './style.css'
+import io from "socket.io-client";
+import animationData from '../animation/typing.json'
+import ScrollableChat from './ScrollableChat';
+import Lottie from 'react-lottie';
+const ENDPOINT = "http://localhost:5000"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
+var socket, selectedChatCompare;
+
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -157,7 +164,8 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         px={2}
                         w="100%"
                         fontFamily="Work sans"
-                        d="flex"
+
+                        className='eyeset'
                         justifyContent={{ base: "space-between" }}
                         alignItems="center"
                     >
@@ -195,6 +203,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                         h="100%"
                         borderRadius="lg"
                         overflowY="hidden"
+                        className='message-input'
                     >
                         {loading ? (
                             <Spinner
@@ -210,7 +219,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             </div>
                         )}
 
-                        <FormControt
+                        <FormControl
                             onKeyDown={sendMessage}
                             id="first-name"
                             isRequired
@@ -235,7 +244,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                 value={newMessage}
                                 onChange={typingHandler}
                             />
-                        </FormControt>
+                        </FormControl>
                     </Box>
                 </>
             ) : (
